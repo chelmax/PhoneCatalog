@@ -11,6 +11,8 @@ public class PhoneNumber {
     private String number;
 
     public PhoneNumber() {
+        countryCode = "+7";
+        cityCode = "(812)";
     }
 
     

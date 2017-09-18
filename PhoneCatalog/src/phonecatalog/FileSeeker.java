@@ -9,12 +9,19 @@ import java.util.*;
  */
 public class FileSeeker {
     
-    private ArrayList<String> pathToFilesList;
+    private  ArrayList<String> pathToFilesList;
 
     public FileSeeker() {
         this.pathToFilesList = new ArrayList();
     }
     
+    public String getFile(int index){
+        return pathToFilesList.get(index);
+    }
+    
+    public int getAmountOfFiles(){
+        return pathToFilesList.size();
+    }
     
     public void start(String path){
         try{
@@ -49,7 +56,7 @@ public class FileSeeker {
     }
     
     public boolean txtCheck(String pathToFile){
-        return pathToFile.endsWith(".class");
+        return pathToFile.endsWith(".txt");
     }
     
     public void print(){
