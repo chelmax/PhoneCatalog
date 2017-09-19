@@ -11,8 +11,8 @@ public class PhoneNumber {
     private String number;
 
     public PhoneNumber() {
-        countryCode = "+7";
-        cityCode = "(812)";
+        countryCode = "7";
+        cityCode = "812";
     }
 
     
@@ -46,5 +46,12 @@ public class PhoneNumber {
         this.number = number;
     }
     
+    public void printFullNumber(){
+        String numberFirstPart, numberSecondPart;
+        numberFirstPart = number.substring(0, 3);
+        numberSecondPart = number.substring(3, number.length());
+        System.out.println("+" + countryCode + " (" + cityCode + ") "
+                + numberFirstPart + "-" + numberSecondPart);
+    }
     
 }

@@ -60,8 +60,7 @@ public class FileSeeker {
     }
     
     public void print(){
-        for(int i = 0; i < pathToFilesList.size(); i++){        
-            String s = pathToFilesList.get(i);
+        for (String s : pathToFilesList) {
             System.out.println(s);
         }
     }
