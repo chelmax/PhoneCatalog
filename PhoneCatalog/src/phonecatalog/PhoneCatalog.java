@@ -15,7 +15,6 @@ public class PhoneCatalog {
         Catalog c = new Catalog();
         c.createCatalog(PATH);
         c.printCatalog();
-     
     }
     
 }

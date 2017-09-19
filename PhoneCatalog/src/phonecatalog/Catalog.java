@@ -1,8 +1,7 @@
 package phonecatalog;
 
 import java.io.*;
-import java.util.ArrayList;
-
+import java.util.*;
 /**
  *
  * @author Max
@@ -32,22 +31,17 @@ public class Catalog {
                 System.err.println(ex);
             } 
         }
+        
+        deleteDublicatsAndSort();
     }
     
     public void addNumber(String uncheckedNumber){
-        PhoneNumber checkedNumber = new PhoneNumber();
-        checkedNumber =  checkNumber(uncheckedNumber);
+        PhoneNumber checkedNumber = checkNumber(uncheckedNumber);
         numbers.add(checkedNumber);
     }
     
     public PhoneNumber checkNumber(String uncheckedNumber){
         PhoneNumber checkedNumber = new PhoneNumber();
-        /*boolean isCountryCode = false;
-        
-        if(uncheckedNumber.charAt(0) == '+'){
-            uncheckedNumber = uncheckedNumber.replace("+", "");
-            isCountryCode = true;
-        }*/
             
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < uncheckedNumber.length(); i++) {
@@ -77,9 +71,30 @@ public class Catalog {
         return checkedNumber;
     }
     
+    public void deleteDublicatsAndSort(){
+        TreeSet<String> numbersSet = new TreeSet();
+        for (PhoneNumber number : numbers) {
+            String temp = number.getCountryCode() + number.getCityCode() + number.getNumber();
+            numbersSet.add(temp); //поправить порядок возрастания
+        }
+        
+        String[] numbersMas; 
+        numbersMas = numbersSet.toArray(new String[numbersSet.size()]);
+        
+        numbers = new ArrayList();
+        
+        for (String numberFromMas : numbersMas) {
+            PhoneNumber number = new PhoneNumber();
+            int length = numberFromMas.length();
+            number.setNumber(numberFromMas.substring(length - 7, length));
+            number.setCityCode(numberFromMas.substring(length - 10, length - 7));
+            number.setCountryCode(numberFromMas.substring(0, length - 10));
+            numbers.add(number);
+        }
+    }
+    
     public void printCatalog(){
-        for(int i = 0; i < numbers.size(); i++){        
-            PhoneNumber number = numbers.get(i);
+        for (PhoneNumber number : numbers) {
             number.printFullNumber();
         }
     }
