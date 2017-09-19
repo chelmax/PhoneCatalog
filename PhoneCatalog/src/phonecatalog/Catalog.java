@@ -44,7 +44,23 @@ public class Catalog {
     
     public PhoneNumber checkNumber(String uncheckedNumber){
         PhoneNumber checkedNumber = new PhoneNumber();
-        //следующее мое задание
+        /*boolean isCountryCode = false;
+        
+        if(uncheckedNumber.charAt(0) == '+'){
+            uncheckedNumber = uncheckedNumber.replace("+", "");
+            isCountryCode = true;
+        }*/
+            
+        
+        String[] find = {"+", "(", ")", "-"};
+        for (String temp : find) 
+            uncheckedNumber = uncheckedNumber.replace(temp, "");
+        
+        int numberBeginsAt = uncheckedNumber.length() - 7;
+        checkedNumber.setNumber(uncheckedNumber.substring(numberBeginsAt));
+        
+        
+        
         return checkedNumber;
     }
 }
