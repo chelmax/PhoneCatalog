@@ -76,7 +76,7 @@ public class Catalog {
         for (PhoneNumber number : numbers) {
             String temp = number.getCountryCode() + number.getCityCode() + number.getNumber();
             Long longNumber = Long.parseLong(temp);
-            numbersSet.add(longNumber); //поправить порядок возрастания
+            numbersSet.add(longNumber); 
         }
         
         Long[] numbersLongMas; 
