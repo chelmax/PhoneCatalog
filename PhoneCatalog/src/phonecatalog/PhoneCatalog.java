@@ -6,7 +6,7 @@ package phonecatalog;
  */
 public class PhoneCatalog {
     
-    private static final String PATH = "D:\\test";
+    private static final String PATH = "C:\\TestData\\";
     
     /**
      * @param args the command line arguments

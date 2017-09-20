@@ -72,18 +72,24 @@ public class Catalog {
     }
     
     public void deleteDublicatsAndSort(){
-        TreeSet<String> numbersSet = new TreeSet();
+        TreeSet<Long> numbersSet = new TreeSet();
         for (PhoneNumber number : numbers) {
             String temp = number.getCountryCode() + number.getCityCode() + number.getNumber();
-            numbersSet.add(temp); //поправить порядок возрастания
+            Long longNumber = Long.parseLong(temp);
+            numbersSet.add(longNumber); //поправить порядок возрастания
         }
         
-        String[] numbersMas; 
-        numbersMas = numbersSet.toArray(new String[numbersSet.size()]);
+        Long[] numbersLongMas; 
+        numbersLongMas = numbersSet.toArray(new Long[numbersSet.size()]);
+        
+        String[] numbersStringMas = new String[numbersLongMas.length];
+        for(int i = 0; i < numbersLongMas.length; i++){
+            numbersStringMas[i] = numbersLongMas[i].toString();
+        }
         
         numbers = new ArrayList();
         
-        for (String numberFromMas : numbersMas) {
+        for (String numberFromMas : numbersStringMas) {
             PhoneNumber number = new PhoneNumber();
             int length = numberFromMas.length();
             number.setNumber(numberFromMas.substring(length - 7, length));
